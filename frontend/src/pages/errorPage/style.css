@@ -1,0 +1,25 @@
+.fa-triangle-exclamation {
+    font-size: 4em;
+    color: #2c3e50;
+    margin-top: 0.25em;
+}
+.oups {
+    font-size: 5em;
+    color: mediumseagreen;
+}
+a {
+    text-decoration: none;
+}
+.error-button {
+    display: block;
+    width: 50%;
+    padding: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 1em auto;
+    border-color: #00bc77;
+    background-color: #00bc77;
+    color: #fff;
+    height: 5em;
+    margin-bottom: 3em;
+}
