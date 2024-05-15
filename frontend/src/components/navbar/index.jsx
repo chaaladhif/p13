@@ -1,6 +1,7 @@
 import "./style.css";
 import Logo from "../../assets/argentBankLogo.png";
 import { Link } from "react-router-dom";
+import Loged from "./loged.jsx";
 function Navbar() {
     return (
         <div className="main-nav">
@@ -12,12 +13,7 @@ function Navbar() {
                 />
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
-            <div>
-                <Link to="/Login" className="main-nav-item">
-                    <i className="fa fa-user-circle"></i>
-                    Sign In
-                </Link>
-            </div>
+              <Loged />
         </div>
     );
 }

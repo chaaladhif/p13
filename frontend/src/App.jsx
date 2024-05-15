@@ -5,7 +5,7 @@ import Footer from "./components/footer/index";
 import Home from "./pages/home/index";
 import ErrorPage from "./pages/errorPage/index";
 import Login from "./pages/login";
-import Account from "./pages/account/index";
+import Profile from "./pages/profile/index";
 function App() {
     return (
         <>
@@ -14,7 +14,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/Login" element={<Login />} />
-                    <Route path="/Account" element={<Account />} />
+                    <Route path="/Profile" element={<Profile />} />
                     <Route path="*" element={<ErrorPage />} />
                 </Routes>
                 <Footer />

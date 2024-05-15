@@ -1,0 +1,31 @@
+.edit-content {
+    background-color: #12002b;
+    width: 300px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: absolute;
+    right: 36%;
+    top: 30%;
+    z-index: 10;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#username {
+    padding: 0.4em;
+}
+.save-button {
+    padding: 0.2em 2em;
+}
+.cancel-button {
+    padding: 0.2em 2em;
+    background-color: #fff;
+    color: #000;
+}
+.row {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 1em;
+}
