@@ -1,6 +1,6 @@
 import "./style.css";
 import { useEffect, useState } from "react";
-import { setUserFirstName } from "../../store";
+import { setUserFirstName, setUserLastName } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import EditName from "../editName/index";
 import Axios from "axios";
@@ -13,7 +13,9 @@ function Welcome() {
     // Sélection des informations de connexion depuis Redux
     const loginInfos = useSelector((state) => state.user.loginInfos);
     const token = useSelector((state) => state.user.token);
-    const [firstName, setfirstNames] = useState(""); // État local pour le nom d'utilisateur
+    const [firstName, setfirstName] = useState("");
+    const [lastName, setlastName] = useState(""); // État local pour le nom d'utilisateur
+    // État local pour le nom d'utilisateur
     const dispatch = useDispatch();
     useEffect(() => {
         getUserData(); // Appel de la fonction pour récupérer les données utilisateur
@@ -28,9 +30,14 @@ function Welcome() {
             },
         })
             .then((response) => {
-                const updatedUserName = response.data.body.userName;
-                setfirstNames(updatedUserName);
-                dispatch(setUserFirstName(updatedUserName));
+                const updatedFirstName = response.data.body.firstName;
+                const updatedLastName = response.data.body.lastName;
+
+                setfirstName(updatedFirstName);
+                setlastName(updatedLastName);
+
+                dispatch(setUserFirstName(updatedFirstName));
+                dispatch(setUserLastName(updatedLastName));
             })
             .catch(function (error) {
                 console.error("Token incorrect.");
@@ -45,7 +52,7 @@ function Welcome() {
                 <h1>
                     Welcome back
                     <br />
-                    {firstName}!
+                    {firstName} {lastName}!
                 </h1>
                 <button className="edit-button" onClick={toggleEdit}>
                     Edit Name

@@ -19,7 +19,7 @@ function EditName() {
         const firstname = document.getElementById("firstname").value;
         const lastname = document.getElementById("lastname").value;
         console.log(firstname, lastname);
-        if (firstname !== "" && lastname !== "") {
+        if (firstname !== "" || lastname !== "") {
             event.preventDefault();
             setFirstName(firstname);
             setLasName(lastname);
