@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { setUserFirstName, setUserLastName, setUsername } from "../../store";
+import { setUserFirstName, setUserLastName } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import Axios from "axios";
 function EditName() {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); // Récupération de la fonction de dispatch Redux
     const Navigate = useNavigate();
     const [firstName, setFirstName] = useState("");
     const [lastName, setLasName] = useState("");
@@ -13,17 +13,17 @@ function EditName() {
     const [updateFirst, setUpdateFirst] = useState(false);
     const [updateLast, setUpdateLast] = useState(false);
 
-    const token = useSelector((state) => state.user.token);
+    const token = useSelector((state) => state.user.token); // Sélection du token depuis le state Redux
 
     const handleUpdateName = (event) => {
+        // Fonction appelée lors de la soumission du formulaire
         const firstname = document.getElementById("firstname").value;
         const lastname = document.getElementById("lastname").value;
-        console.log(firstname, lastname);
         if (firstname !== "" || lastname !== "") {
             event.preventDefault();
-            setFirstName(firstname);
+            setFirstName(firstname); // Mise à jour de l'état local du prénom
             setLasName(lastname);
-            dispatch(setUserFirstName(firstname));
+            dispatch(setUserFirstName(firstname)); // Dispatch de l'action Redux pour mettre à jour le prénom dans le store
             dispatch(setUserLastName(lastname));
 
             updateData(firstname, lastname);
@@ -36,11 +36,13 @@ function EditName() {
     };
 
     const updateData = (firstname, lastname) => {
+        // Fonction pour envoyer les données à l'API
         const userData = {
-            firstName: firstname,
+            firstName: firstname, // Nouveau prénom
             lastName: lastname,
         };
         Axios.put("http://localhost:3001/api/v1/user/profile", userData, {
+            // Requête PUT à l'API avec Axios
             headers: {
                 Authorization: `Bearer ${token}`,
                 Accept: "application/json",
