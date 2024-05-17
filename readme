@@ -1,9 +1,9 @@
 📎Utilisez une API pour un compte utilisateur bancaire avec React
------------------------------------------------------------
+-------------------------------------------------------------------------
 Objectifs
------------------------------------------------------------
+-------------------------------------------------------------------------
 Phase 1 : Authentification des utilisateurs - Création d'une application web permettant aux clients de se connecter et de gérer leurs comptes et leur profil.
 Phase 2 : Transactions - Il s’agirait de spécifier les endpoints d’API nécessaires pour une éventuelle deuxième mission une fois que nous aurons terminé la première.
 Technologies:
------------------------------------------------------------
+----------------------------------------------------------------------------
 HTML CSS Javascript React Redux
