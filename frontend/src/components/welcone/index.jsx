@@ -43,10 +43,16 @@ function Welcome() {
                 console.error("Token incorrect.");
                 console.log(error);
             });
+    }; // Fonction pour désactiver le mode édition après mise à jour du nom
+    // Fonction pour désactiver le mode édition après mise à jour du nom
+    const handleEditComplete = (event) => {
+        event.preventDefault(); // Empêche l'action par défaut du formulaire
+
+        setIsEditing(false);
     };
     return (
         <div className="welcome-container">
-            {isEditing && <EditName />}
+            {isEditing && <EditName onEditComplete={handleEditComplete} />}
             {/* Affichez EditName si isEditing est true */}
             <div className="header">
                 <h1>

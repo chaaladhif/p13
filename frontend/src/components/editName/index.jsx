@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { setUserFirstName, setUserLastName } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 import Axios from "axios";
-function EditName() {
+function EditName({ onEditComplete }) {
     const dispatch = useDispatch(); // Récupération de la fonction de dispatch Redux
     const Navigate = useNavigate();
     const [firstName, setFirstName] = useState("");
@@ -16,6 +16,8 @@ function EditName() {
     const token = useSelector((state) => state.user.token); // Sélection du token depuis le state Redux
 
     const handleUpdateName = (event) => {
+        event.preventDefault();
+
         // Fonction appelée lors de la soumission du formulaire
         const firstname = document.getElementById("firstname").value;
         const lastname = document.getElementById("lastname").value;
@@ -29,7 +31,7 @@ function EditName() {
             updateData(firstname, lastname);
             setUpdateFirst(!updateFirst);
             setUpdateLast(!updateLast);
-            Navigate("/");
+            Navigate("/Profile");
         } else {
             console.error("Username is required.");
         }
@@ -72,7 +74,7 @@ function EditName() {
                     <button className="save-button" onClick={handleUpdateName}>
                         Save
                     </button>
-                    <button className="cancel-button" disabled>
+                    <button className="cancel-button" onClick={onEditComplete}>
                         Cancel
                     </button>
                 </div>
