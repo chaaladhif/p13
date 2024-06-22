@@ -1,12 +1,30 @@
 .edit-content {
     background-color: #12002b;
-    width: 300px;
+    width: 285px;
     margin: 0 auto;
     padding: 2rem;
     position: absolute;
     right: 36%;
     top: 30%;
     z-index: 10;
+}
+@media (max-width: 720px) {
+    .edit-content {
+        width: 150px;
+    }
+    input {
+        width: 8em;
+    }
+}
+@media (max-width: 767px) {
+    .edit-content {
+        width: 75px;
+        top: 21%;
+        padding: 1em;
+    }
+    input {
+        width: 8em;
+    }
 }
 .form {
     display: flex;

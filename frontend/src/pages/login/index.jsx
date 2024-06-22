@@ -1,7 +1,7 @@
 import "./style.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setLoginInfos, setUserFirstName, setUserToken } from "../../store"; // Importez vos actions setUserToken et setUserFirstName
+import { setLoginInfos, setUserFirstName, setUserToken } from "../../store"; // Importez actions setUserToken et setUserFirstName
 import Axios from "axios"; // Importez Axios pour effectuer la requête HTTP
 import { useNavigate } from "react-router-dom";
 function Login() {
@@ -21,7 +21,7 @@ function Login() {
         Axios.post("http://localhost:3001/api/v1/user/login", data)
             .then((response) => {
                 dispatch(setLoginInfos(data));
-                // Une fois l'utilisateur connecté avec succès, stockez le token JWT et d'autres informations dans votre store Redux
+                // Une fois l'utilisateur connecté avec succès, stockez le token JWT et d'autres informations dans store Redux
                 dispatch(setUserToken(response.data.body.token));
                 dispatch(setUserFirstName(response.data.body.firstName));
                 navigate("/Profile"); // Redirigez l'utilisateur vers la page de profil
@@ -29,7 +29,6 @@ function Login() {
             .catch((error) => {
                 // Gérez les erreurs d'authentification
                 console.error("Erreur lors de la connexion :", error);
-                // Vous pouvez afficher un message d'erreur à l'utilisateur ou effectuer d'autres actions en cas d'échec de la connexion
             });
     };
 
