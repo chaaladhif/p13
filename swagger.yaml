@@ -272,7 +272,6 @@ definitions:
   TransactionsList:
     type: object
     properties:
-      transactions:
         type: array
         items:
           $ref: '#/definitions/Transaction'

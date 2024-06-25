@@ -8,21 +8,16 @@ import Axios from "axios";
 function EditName({ onEditComplete, onNameChange }) {
     const dispatch = useDispatch(); // Récupération de la fonction de dispatch Redux
     const navigate = useNavigate();
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
     const token = useSelector((state) => state.user.token); // Sélection du token depuis le state Redux
 
     const handleUpdateName = (event) => {
         event.preventDefault();
-
         const newFirstName = document.getElementById("firstname").value;
         const newLastName = document.getElementById("lastname").value;
         if (newFirstName !== "" || newLastName !== "") {
-            setFirstName(newFirstName); // Mise à jour de l'état local du prénom
-            setLastName(newLastName);
             dispatch(setUserFirstName(newFirstName)); // Dispatch de l'action Redux pour mettre à jour le prénom dans le store
             dispatch(setUserLastName(newLastName));
-
+            // Mise à jour des données sur le serveur
             updateData(newFirstName, newLastName);
             onNameChange(newFirstName, newLastName);
             onEditComplete(); // Fermeture du formulaire après la mise à jour
@@ -37,6 +32,7 @@ function EditName({ onEditComplete, onNameChange }) {
             firstName: newFirstName, // Nouveau prénom
             lastName: newLastName,
         };
+        // Envoi des données mises à jour avec une requête PUT
         Axios.put("http://localhost:3001/api/v1/user/profile", userData, {
             headers: {
                 Authorization: `Bearer ${token}`,
